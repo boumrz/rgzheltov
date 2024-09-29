@@ -30,3 +30,7 @@ jobs:
           REMOTE_HOST: cu04179@92.53.106.114
         run: |
           rsync -avzhe "ssh -o StrictHostKeyChecking=no" ./ $REMOTE_HOST --exclude '.git'
+      - name: Execute remote commands
+        run: ssh $REMOTE_HOST 'bash -s' < ./scripts/deploy.sh
+      - name: LS
+        run: ls
