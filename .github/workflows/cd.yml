@@ -31,4 +31,4 @@ jobs:
         run: |
           rsync -avzhe "ssh -o StrictHostKeyChecking=no" ./ $REMOTE_HOST --exclude '.git'
       - name: LS
-        run: ls
+        run: ls ~/.ssh/id_rsa
