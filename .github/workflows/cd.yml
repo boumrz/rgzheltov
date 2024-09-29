@@ -30,5 +30,11 @@ jobs:
           REMOTE_HOST: cu04179@92.53.106.114
         run: |
           rsync -avzhe "ssh -o StrictHostKeyChecking=no" ./ $REMOTE_HOST --exclude '.git'
-      - name: LS
-        run: ssh $REMOTE_HOST
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H $REMOTE_HOST >> ~/.ssh/known_hosts
+      - name: ssh
+        run: ssh -i ~/.ssh/id_rsa cu04179@92.53.106.114
