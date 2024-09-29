@@ -37,4 +37,4 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
       # ssh-keyscan -H cu04179@92.53.106.114 >> ~/.ssh/known_hosts
       - name: ssh
-        run: ssh -i ~/.ssh/id_rsa cu04179@92.53.106.114
+        run: ssh -i ~/.ssh/id_rsa -v cu04179@92.53.106.114
