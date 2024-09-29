@@ -25,7 +25,7 @@ jobs:
       - name: Install RSYNC
         run: sudo apt-get install rsync
 
-      - name: Deploy to VDS
+      - name: Deploy to VDS d
         env:
           REMOTE_HOST: cu04179@92.53.106.114
         run: |
