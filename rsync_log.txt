@@ -1,0 +1,4 @@
+2024/09/30 00:03:32 [12233] building file list
+2024/09/30 00:03:32 [12233] done
+2024/09/30 00:03:33 [12233] rsync: connection unexpectedly closed (8 bytes received so far) [sender]
+2024/09/30 00:03:33 [12233] rsync error: error in rsync protocol data stream (code 12) at /AppleInternal/Library/BuildRoots/20d6c351-ee94-11ec-bcaf-7247572f23b4/Library/Caches/com.apple.xbs/Sources/rsync/rsync/io.c(453) [sender=2.6.9]
