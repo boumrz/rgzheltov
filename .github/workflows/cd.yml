@@ -31,5 +31,5 @@ jobs:
         run: |
           rsync -avzhe "ssh -o StrictHostKeyChecking=no" ./ $REMOTE_HOST:/public_html --exclude '.git'
       # ssh-keyscan -H cu04179@92.53.106.114 >> ~/.ssh/known_hosts
-      # - name: ssh
+      # - name: sshs
       #   run: ssh -i ~/.ssh/id_rsa -v cu04179@92.53.106.114
