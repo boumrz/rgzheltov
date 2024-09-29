@@ -18,7 +18,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the jobb
     steps:
       - name: Deploy using ssh
-        uses: appleboy/ssh-action@master
+        uses: webfactory/ssh-agent@v0.5.3
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
