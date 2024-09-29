@@ -29,4 +29,4 @@ jobs:
         env:
           REMOTE_HOST: cu04179@92.53.106.114
         run: |
-          ssh $REMOTE_HOST
+          rsync -avzhe "ssh -o StrictHostKeyChecking=no" ./ $REMOTE_HOST --exclude '.git'
