@@ -20,12 +20,12 @@ jobs:
       - name: Set up SSH
         uses: webfactory/ssh-agent@v0.5.3
         with:
-          ssh-private-key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDmvWlszq4Rny7tRuC3mDGDte+ct6+9wlT235zWVoLra584DiHhTqwyZYT72NJHv1CLWNaS0FduEj0gHOtk4Zk5iDOJ1wF3/0IumF32MP7rTwSFUa2dqLsijpjwgaZG+Hhx4VILOS87T2JCHx6221jGl2BXu56xnhGNmrAguSPOIyOvYk73EmjqjHn+3v0JrI/zwgTCleC3Vh78y5yzpF6HKcZAlx6pJTyuriCNrydIyNJI/rZVmdliu3Jp5FrIdNJVkFtKfCYWSCbq2uVTKRM8V6xgnqLWZLzdQ9PyyH4rwL58df+eF6sg9lT+GAfC+ofivPv6uGTRXE1JnTiiLj9rLJ0aMNE1VUZsWkhvCoKd+JFt3NE7Xb1qOwUIOgKdRsUkPoDKtfJWnxky9XEudEH9X6wc7aExp0d5IQfDBPWbMGSwhkVhrkFWu+7GMa8JIq98KoTkBaUIWQWBC0RI1JVpYhwEr4PFpiy9Oe4wtld38Og4oQk3YTXCtyVQNFGAqkvUUNtR0KYHJfhhirtfHFBQ6tYYqenlqFSr3g3hlXzFN2W+YNwX4qG5eoph7U7o5G0BDvwHNTwbO/NHNKaItjQrihHH8DY+/8gLGYaBVyl2ho8Liy8kne70h67ac5iYiVTSDY0udIqqJUrIB4aaZDHpkVUDT/lsLOkMGuGjb0r9dw== boumrz@gmail.com
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Install RSYNC
         run: sudo apt-get install rsync
 
-      - name: Deploy to VDS d
+      - name: Deploy to VDS
         env:
           REMOTE_HOST: cu04179@92.53.106.114
         run: |
