@@ -22,7 +22,7 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Set up SSH
+      - name: Set up SSH12312312312
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
@@ -30,6 +30,9 @@ jobs:
 
       - name: Install RSYNC
         run: sudo apt-get install rsync
+
+      - name: фвфвыфвыфв
+        run: ssh -i ~/.ssh/id_rsa cu04179@92.53.106.114
 
       - name: Deploy to VDS
         env:
