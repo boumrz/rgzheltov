@@ -5,7 +5,7 @@ FROM node:18
 WORKDIR front
 
 # Копируйте package.json и package-lock.json
-COPY package*.json ./front
+COPY package*.json ./
 
 # Установите зависимости
 RUN npm install
