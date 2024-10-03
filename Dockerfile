@@ -2,7 +2,7 @@
 FROM node:18
 
 # Установите директорию для приложения
-WORKDIR front
+WORKDIR /front
 
 # Копируйте package.json и package-lock.json
 COPY package*.json ./
@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm install
 
 # Копируйте исходный код приложения в контейнер
-COPY . .
+COPY . /front
 
 # Откройте порт
 EXPOSE 8080
