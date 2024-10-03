@@ -1,20 +1,29 @@
-# Используйте официальный Node.js образ как базовый
-FROM node:18
+   # Базовый образ
+   FROM node:18-alpine
 
-# Установите директорию для приложения
-WORKDIR /front
+   # Устанавливаем рабочую директорию
+   WORKDIR /app
 
-# Копируйте package.json и package-lock.json
-COPY package*.json ./
+   # Копируем package.json и pnpm-lock.yaml (если используется) и только потом устанавливаем зависимости
+   COPY package.json package-lock.json* ./
 
-# Установите зависимости
-RUN npm install
+   # Устанавливаем зависимости
+   RUN npm install
 
-# Копируйте исходный код приложения в контейнер
-COPY . /front
+   # Копируем все файлы в контейнер
+   COPY . .
 
-# Определите команду для запуска приложения
-CMD ["npm", "start"]
+   # Компилируем проект
+   RUN npm run build
 
-# Откройте порт
-EXPOSE 8080
+   # Используем nginx для обслуживания статических файлов
+   FROM nginx:alpine
+
+   # Копируем скомпилированные файлы в папку, обслуживаемую nginx
+   COPY --from=0 /app/dist /usr/share/nginx/html
+
+   # Экспонируем нужный порт
+   EXPOSE 80
+
+   # Дефолтная команда, которая будет выполняться при запуске контейнера
+   CMD ["nginx", "-g", "daemon off;"]
