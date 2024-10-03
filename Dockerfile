@@ -13,6 +13,6 @@
    # Копируем все файлы в контейнер
    COPY . .
 
-   RUN npm start
+   CMD ["npm", "start"]
 
    EXPOSE 10000
