@@ -23,7 +23,7 @@
    COPY --from=0 /app/dist /usr/share/nginx/html
 
    # Экспонируем нужный порт
-   EXPOSE 80
+   EXPOSE 8080
 
    # Дефолтная команда, которая будет выполняться при запуске контейнера
    CMD ["nginx", "-g", "daemon off;"]
