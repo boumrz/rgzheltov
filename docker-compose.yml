@@ -1,14 +1,4 @@
-captainVersion: 4
-caproverOneClickApp:
-  instructions:
-    start: |
-      Эта однокликовая установка будет развернута с использованием Docker Compose. Убедитесь, что у вас настроены необходимые переменные окружения.
-    end: |
-      Ваше приложение успешно развернуто. Проверьте доменные имена и начните использовать приложение.
-  dockerCompose:
-    version: "3.7"
-    services:
-      app:
-        build: .
-        ports:
-          - 10000:10000
+services:
+  web:
+    ports:
+      - "10000:10000"
