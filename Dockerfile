@@ -5,7 +5,7 @@
    WORKDIR /app
 
    # Копируем package.json и pnpm-lock.yaml (если используется) и только потом устанавливаем зависимости
-   COPY package.json package-lock.json* ./
+   COPY package.json package-lock.json* pnpm-lock.yaml* ./
 
    # Устанавливаем зависимости
    RUN npm install
@@ -16,8 +16,14 @@
    # Компилируем проект
    RUN npm run build
 
-   # Экспонируем нужный порт
-   EXPOSE 8080
+   # Используем nginx для обслуживания статических файлов
+   FROM nginx:alpine
 
-   # Запускаем приложение Vite
-   CMD ["npm", "run", "dev"]
+   # Копируем скомпилированные файлы в папку, обслуживаемую nginx
+   COPY --from=0 /app/dist /usr/share/nginx/html
+
+   # Экспонируем нужный порт
+   EXPOSE 80
+
+   # Дефолтная команда, которая будет выполняться при запуске контейнера
+   CMD ["nginx", "-g", "daemon off;"]
