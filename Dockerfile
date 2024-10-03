@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm install
 
 # Копируйте исходный код приложения в контейнер
-COPY . /front
+COPY . .
 
 # Откройте порт
 EXPOSE 8080
