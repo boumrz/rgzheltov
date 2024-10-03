@@ -2,7 +2,7 @@
 FROM node:18
 
 # Установите директорию для приложения
-WORKDIR /app
+WORKDIR /public
 
 # Копируйте package.json и package-lock.json
 COPY package*.json ./
