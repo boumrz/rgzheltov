@@ -14,7 +14,7 @@ RUN npm install
 COPY . /front
 
 # Откройте порт
-EXPOSE 5173
+EXPOSE 8080
 
 # Определите команду для запуска приложения
 CMD ["npm", "start"]
