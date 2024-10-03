@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Откройте порт
-EXPOSE 3000
+EXPOSE 5173
 
 # Определите команду для запуска приложения
 CMD ["npm", "start"]
