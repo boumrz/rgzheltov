@@ -5,13 +5,13 @@ FROM node:18
 WORKDIR front
 
 # Копируйте package.json и package-lock.json
-COPY package*.json ./
+COPY package*.json ./front
 
 # Установите зависимости
 RUN npm install
 
 # Копируйте исходный код приложения в контейнер
-COPY . .
+COPY . /front
 
 # Откройте порт
 EXPOSE 5173
