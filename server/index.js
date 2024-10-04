@@ -14,6 +14,6 @@ app.get("/api/test", (req, res) => {
 });
 
 // Запуск сервера
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(3001, "0.0.0.0", () => {
+  console.log("Server is running on port 3001");
 });
