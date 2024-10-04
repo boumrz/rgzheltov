@@ -1,4 +1,14 @@
 {
   "schemaVersion": 2,
-  "dockerfilePath": "Dockerfile"
+  "serviceName": "rgzheltov",
+  "env": {
+    "PORT": "3000"
+  },
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "."
+  },
+  "deploy": {
+    "httpPort": 3000
+  }
 }

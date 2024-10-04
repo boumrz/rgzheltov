@@ -1,29 +1,49 @@
-   # Базовый образ
-   FROM node:18-alpine
+# Базовый образ
+FROM node:18-alpine AS builder
 
-   # Устанавливаем рабочую директорию
-   WORKDIR /app
+# Устанавливаем рабочую директорию
+WORKDIR /app
 
-   # Копируем package.json и pnpm-lock.yaml (если используется) и только потом устанавливаем зависимости
-   COPY package.json package-lock.json* ./
+# Копируем package.json и pnpm-lock.yaml (если используется) и устанавливаем зависимости
+COPY package.json package-lock.json* ./
+RUN npm install
 
-   # Устанавливаем зависимости
-   RUN npm install
+# Копируем все файлы в контейнер
+COPY . .
 
-   # Копируем все файлы в контейнер
-   COPY . .
+# Компилируем проект (предполагается, что это фронтенд)
+RUN npm run build
 
-   # Компилируем проект
-   RUN npm run build
+# Теперь создаём образ для сервера
+FROM node:18-alpine AS server
 
-   # Используем nginx для обслуживания статических файлов
-   FROM nginx:alpine
+# Устанавливаем рабочую директорию для сервера
+WORKDIR /app/server
 
-   # Копируем скомпилированные файлы в папку, обслуживаемую nginx
-   COPY --from=0 /app/dist /usr/share/nginx/html
+# Копируем package.json и устанавливаем зависимости сервера
+COPY server/package.json server/package-lock.json* ./
+RUN npm install
 
-   # Экспонируем нужный порт
-   EXPOSE 80
+# Копируем скомпилированные файлы фронтенда из образа builder
+COPY --from=builder /app/dist ./public
 
-   # Дефолтная команда, которая будет выполняться при запуске контейнера
-   CMD ["nginx", "-g", "daemon off;"]
+# Копируем файлы сервера
+COPY server/ ./
+
+# Экспонируем нужный порт (для сервера)
+EXPOSE 3000
+
+# Дефолтная команда для запуска сервера
+CMD ["node", "index.js"]  # замените index.js на ваш основной файл сервера
+
+# Используем nginx для обслуживания статических файлов
+FROM nginx:alpine AS nginx
+
+# Копируем скомпилированные файлы в папку, обслуживаемую nginx
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+# Экспонируем нужный порт
+EXPOSE 80
+
+# Дефолтная команда, которая будет выполняться при запуске контейнера nginx
+CMD ["nginx", "-g", "daemon off;"]
