@@ -41,6 +41,7 @@ FROM nginx:alpine AS nginx
 
 # Копируем скомпилированные файлы в папку, обслуживаемую nginx
 COPY --from=builder /app/dist /usr/share/nginx/html
+COPY nginx/nginx.conf /etc/nginx/nginx.conf
 
 # Экспонируем нужный порт
 EXPOSE 80
