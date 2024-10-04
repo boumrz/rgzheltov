@@ -31,7 +31,7 @@ COPY --from=builder /app/dist ./public
 COPY server/ ./
 
 # Экспонируем нужный порт (для сервера)
-EXPOSE 3000
+EXPOSE 3001
 
 # Дефолтная команда для запуска сервера
 CMD ["node", "index.js"]  # замените index.js на ваш основной файл сервера
