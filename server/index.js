@@ -7,10 +7,14 @@ const PORT = 3001;
 
 app.use(cors());
 app.use(express.json());
-  
+
 // Пример простого GET маршрута
 app.get("/api/test", (req, res) => {
   res.json({ message: "Hello from the API!" });
+});
+
+app.get("/api/test1", (req, res) => {
+  res.json({ message: "Hello" });
 });
 
 // Запуск сервера
