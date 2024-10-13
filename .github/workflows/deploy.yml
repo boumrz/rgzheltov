@@ -30,7 +30,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "./app/client/build/*"
+          source: "./build/*"
           target: "/path/to/remote/client/dir/"
 
       - name: Install server dependencies and copy server files to VPS
@@ -39,7 +39,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "./app/server/*"
+          source: "./server/*"
           target: "/path/to/remote/server/dir/"
 
       - name: Restart Server
