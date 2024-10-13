@@ -55,8 +55,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            pwd
-            which npm
+            /path/to/remote/server/start-server.sh
 
       - name: Echo command
         run: echo "Running deployment commands..."

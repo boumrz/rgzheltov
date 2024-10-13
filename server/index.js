@@ -18,7 +18,7 @@ app.get("/api/test1", (req, res) => {
 });
 
 app.get("/api/test2", (req, res) => {
-  res.json({ message: "asdadasdasasd" });
+  res.json({ message: "123131313123" });
 });
 
 // Запуск сервера
