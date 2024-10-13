@@ -31,7 +31,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "./dist/*"
-          target: "/path/to/remote/client/dir/"
+          target: "/var/www/html"
 
       - name: Install server dependencies and copy server files to VPS
         uses: appleboy/scp-action@master
