@@ -51,6 +51,7 @@ jobs:
           node-version: "20"
           script: |
             cd /path/to/remote/server/dir/server
+            ls
             npm install
             npm install -g pm2
             pm2 restart index.js
