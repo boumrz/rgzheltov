@@ -55,9 +55,8 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            sudo npm cache clean -f
-            sudo npm install
-            node -v
+            pwd
+            which npm
 
       - name: Echo command
         run: echo "Running deployment commands..."
