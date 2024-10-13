@@ -43,20 +43,13 @@ jobs:
           target: "/path/to/remote/server/dir/"
 
       - name: Restart Server
-        uses: actions/setup-node@v3
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          node-version: "20"
-          script: |
-            cd /path/to/remote/server/dir/server
-            ls
-            npm install
-            npm install -g pm2
-            pm2 start index.js --name index || pm2 restart index
-            pm2 save
-            pm2 startup
+        run: |
+          cd /path/to/remote/server/dir/server
+          ls
+          npm install
+          pm2 start index.js --name index || pm2 restart index
+          pm2 save
+          pm2 startup
 
       - name: Echo command
         run: echo "Running deployment commands..."
