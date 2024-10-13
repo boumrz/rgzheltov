@@ -42,7 +42,7 @@ jobs:
           source: "./server/*"
           target: "/path/to/remote/server/dir/"
 
-      - name: Restart Server
+      - name: Install server dependencies
         uses: actions/setup-node@v3
         with:
           host: ${{ secrets.HOST }}
@@ -52,6 +52,16 @@ jobs:
           script: |
             cd /path/to/remote/server/dir/server
             npm i
+
+      - name: Restart Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          node-version: "20"
+          script: |
+            cd /path/to/remote/server/dir/server
             pm2 restart index.js
             pm2 save
             pm2 startup

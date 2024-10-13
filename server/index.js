@@ -17,6 +17,10 @@ app.get("/api/test1", (req, res) => {
   res.json({ message: "Hello" });
 });
 
+app.get("/api/test2", (req, res) => {
+  res.json({ message: "asdadasdasasd" });
+});
+
 // Запуск сервера
 app.listen(3001, "0.0.0.0", () => {
   console.log("Server is running on port 3001");
