@@ -55,7 +55,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            cd /path/to/remote/server/dir/server
             sudo npm cache clean -f
             sudo npm install
             node -v
