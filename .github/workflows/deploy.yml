@@ -50,6 +50,6 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /path/to/remote/server/dir
+            cd /path/to/remote/server/dir/server
             npm install
-            node index.js
+            npm start
