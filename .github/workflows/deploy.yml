@@ -54,6 +54,9 @@ jobs:
             ls
             npm install
             npm install -g pm2
-            pm2 restart index.js
+            pm2 start index.js --name index || pm2 restart index
             pm2 save
             pm2 startup
+
+      - name: Echo command
+        run: echo "Running deployment commands..."
