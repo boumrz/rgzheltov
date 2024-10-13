@@ -23,7 +23,6 @@ jobs:
         run: |
           npm install
           npm run build
-          pwd
 
       - name: Copy files to VPS
         uses: appleboy/scp-action@master
@@ -44,13 +43,13 @@ jobs:
           target: "/path/to/remote/server/dir/"
 
       - name: Restart Server
-        uses: appleboy/ssh-action@master
+        uses: actions/setup-node@v3
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          node-version: "20"
           script: |
-            export PATH=$PATH:/usr/local/bin
             cd /path/to/remote/server/dir/server
             npm install
             npm start
