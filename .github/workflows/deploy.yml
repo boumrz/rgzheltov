@@ -53,9 +53,12 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          node-version: "20"
           script: |
             cd /path/to/remote/server/dir/server
+            export PATH=$PATH:/path/to/node/bin
+            which node
+            which npm
+            which pm2
             ls
             npm install
             npm install -g pm2
