@@ -52,6 +52,6 @@ jobs:
           script: |
             cd /path/to/remote/server/dir/server
             npm i
-            pm2 start index.ts
+            pm2 restart index.js
             pm2 save
             pm2 startup
